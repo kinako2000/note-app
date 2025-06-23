@@ -9,16 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.3.3",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "@heroicons/react": "1.0.6",
+    "@supabase/supabase-js": "1.33.3",
+    "@tanstack/react-query": "^5.80.6",
+    "@tanstack/react-query-devtools": "^5.80.6",
+    "next": "^13",
+    "node": "18.19.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "zustand": "3.7.1"
   },
   "devDependencies": {
-    "@types/node": "24.0.0",
-    "@types/react": "19.1.7",
-    "@types/react-dom": "19.1.6",
-    "eslint": "9.28.0",
-    "eslint-config-next": "15.3.3",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^15.3.3",
+    "postcss": "^8.5.4",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.12",
+    "tailwindcss": "2.2.16",
     "typescript": "5.8.3"
   }
 }
