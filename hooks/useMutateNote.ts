@@ -33,7 +33,7 @@ export const useMutateNote = () => {
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
-      revalidateList();
+      //revalidateList();
       reset();
       alert('successfully! completed');
     },
@@ -60,7 +60,7 @@ export const useMutateNote = () => {
     ,
     onSuccess: (updatedNote) => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
-      revalidateList();
+      //revalidateList();
       revalidateSingle(updatedNote.id);
       reset();
       alert('Updated!');
@@ -84,7 +84,7 @@ export const useMutateNote = () => {
     ,
     onSuccess: (deletedId) => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
-      revalidateList();
+      //revalidateList();
       revalidateSingle(deletedId);
       reset();
       alert('Deleted');

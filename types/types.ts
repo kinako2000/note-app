@@ -3,7 +3,7 @@ export type Comment = {
     content: string;
     created_at: string;
     note_id: string;
-    user_id: string | undefined;
+    user_id: string;
 }
 export type Note = {
     id: string;
@@ -23,5 +23,7 @@ export type EditedNote = {
   export type EditedComment = {
     id: string | undefined;
     content: string;
+    note_id: string;
+    user_id: string;
   };
 

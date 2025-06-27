@@ -13,7 +13,7 @@ export default async function handler(
 
 let revalidated = false;
 try {
-  await res.revalidate(`/notes/${id}`);
+  await res.revalidate(`/note/${id}`);
   revalidated = true;
 } catch (err) {
   /*console.error('Error revalidating notes page:', err);

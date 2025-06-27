@@ -8,7 +8,7 @@ import { revalidateSingle } from "../utils/revalidation";
 export const useMutateComment = () => {
 const reset = useStore((state) => state.resetEditedComment)
 const createCommentMutation = useMutation({
-    mutationFn: async (comment: Omit<Comment,'id' | 'created_at' | 'user_id'>) => {
+    mutationFn: async (comment: Omit<Comment,'id' | 'created_at' >) => {
         const { data, error } = await supabase
             .from('comments')
             .insert(comment)
@@ -20,7 +20,7 @@ const createCommentMutation = useMutation({
         return data;
     },
     onSuccess: (res) => {
-        revalidateSingle(res[0].note_id);
+        revalidateSingle(res.note_id);
         reset();
         alert('Comment added successfully!');
     },
@@ -44,7 +44,7 @@ const updateCommentMutation = useMutation({
         return data;
     },
     onSuccess: (res) => {
-        revalidateSingle(res[0].note_id);
+        revalidateSingle(res.note_id);
         reset();
         alert('Comment updated successfully!');
     },
@@ -68,7 +68,7 @@ const deleteCommentMutation = useMutation({
         return data;
     },
     onSuccess: (res) => {
-        revalidateSingle(res[0].note_id);
+        revalidateSingle(res.note_id);
         alert('Comment deleted successfully!');
     },
     onError: (error: any) => {
