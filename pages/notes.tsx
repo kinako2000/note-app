@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
     console.log("取得したnotes", notes)
     return {
         props: { notes },
-        revalidate: 10, // Revalidate every 10 seconds
+        revalidate: 1, // Revalidate every 10 seconds
 
     };
 
