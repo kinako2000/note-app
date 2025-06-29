@@ -16,9 +16,12 @@ export default async function handler(
 ) {
 let revalidated = false;
 console.log('Revalidating notes page...');
-if(req.query.secret !== process.env.REVALIDATE_SECRET) {
+const secret = req.query.secret || req.body.secret;
+
+if (secret !== process.env.REVALIDATE_SECRET) {
   return res.status(401).json({ message: "Your secret is invalid", revalidate: false });
 }
+
 try {
   await res.revalidate('/notes');
   revalidated = true;
