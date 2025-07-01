@@ -1,7 +1,7 @@
 import { useEffect,useState, FC } from "react"
 import { supabase } from "../utils/supabase"
 import Link from "next/link"
-import { PencilAltIcon, TrashIcon} from "@heroicons/react/solid"
+import {  TrashIcon, PencilIcon } from "@heroicons/react/24/solid"
 import useStore from "../store"
 import { Note } from "../types/types"
 import  { useMutateNote } from "../hooks/useMutateNote"
@@ -27,7 +27,7 @@ export const NoteItem:FC<Omit<Note,'created_at' | 'note_id' | 'comments'>>
         </Link>
         {userId === user_id && (
             <div className="float-right ml-20 flex">
-                <PencilAltIcon
+                <PencilIcon
                 className="h-5 w-5 text-blue-500 cursor-pointer"
                 onClick={() => update({ id: id, content: content, title: title })}
                 />

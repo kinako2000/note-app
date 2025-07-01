@@ -1,7 +1,7 @@
 import { NextPage } from "next"
 import { GetStaticPaths,GetStaticProps } from "next"
 import Link from "next/link"
-import { ChevronDoubleLeftIcon } from "@heroicons/react/solid"
+import { ChevronDoubleLeftIcon } from "@heroicons/react/24/solid"
 import { supabase } from "../../utils/supabase"
 import Layout from "../../components/Layout"
 import { CommentForm } from "../../components/CommentForm"

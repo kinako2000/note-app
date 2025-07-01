@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { DocumentTextIcon, LogoutIcon } from '@heroicons/react/solid';
+import { DocumentTextIcon, ArrowRightIcon} from '@heroicons/react/24/solid';
 import Layout from '../components/Layout';
 import { supabase } from '../utils/supabase';
 import { GetStaticProps } from 'next';
@@ -32,7 +32,7 @@ type StaticProps = {
 const Notes:NextPage<StaticProps> = ({ notes }) => {
     const signOut = () => { supabase.auth.signOut() }
     return  <Layout title="Notes">
-                <LogoutIcon className="mb-6 h-6 w-6 text-blue-500 cursor-pointer"
+                <ArrowRightIcon className="mb-6 h-6 w-6 text-blue-500 cursor-pointer"
                             onClick={signOut}
                 />
                 <DocumentTextIcon className="h-8 w-8 text-blue-500" />

@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
+import {  TrashIcon, PencilIcon } from "@heroicons/react/24/solid"
 import { supabase } from "../utils/supabase";
 import useStore from "../store";
 import { useMutateComment } from "../hooks/useMutateComment";
@@ -27,7 +27,7 @@ export const CommentItem:FC<Omit<Comment,'created_at' >> = ({
         <span>{content}</span>
         {userId === user_id && (
         <div className="float-right ml-20 flex">
-            <PencilAltIcon
+            <PencilIcon
             className="mx-1 h-5 w-5 text-blue-500 cursor-pointer"
             onClick={() => update({ id,content, user_id, note_id })}
             />

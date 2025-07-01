@@ -1,6 +1,6 @@
 import { FC,ReactNode } from "react"
 import  Head from "next/head"
-import { BadgeCheckIcon} from "@heroicons/react/solid"
+import { ShieldCheckIcon } from "@heroicons/react/24/solid"
 
 type Title= {
     title: string;
@@ -19,7 +19,7 @@ const Layout: FC<Title> = ( { children, title="Todo app"}) => {
             {children}
         </main>
         <footer  className="flex h-12 w-full items-center justify-center border-t">
-            <BadgeCheckIcon className="h-6 w-6 text-blue-500" />
+            <ShieldCheckIcon className="h-6 w-6 text-blue-500" />
         </footer>
     </div>
     )
