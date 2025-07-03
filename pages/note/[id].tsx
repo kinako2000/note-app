@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         props: {
             note:{  ...note, comments: note.comments ?? [],}
         },
-        revalidate: false
+        revalidate: 1
     }
 }
 
