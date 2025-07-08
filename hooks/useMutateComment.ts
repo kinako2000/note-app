@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "../utils/supabase";
 import useStore from "../store";
 import { Comment, EditedComment } from "../types/types";
@@ -7,6 +7,7 @@ import { revalidateSingle } from "../utils/revalidation";
 
 export const useMutateComment = () => {
 const reset = useStore((state) => state.resetEditedComment)
+const queryClient = useQueryClient();
 const createCommentMutation = useMutation({
     mutationFn: async (comment: Omit<Comment,'id' | 'created_at' >) => {
         const { data, error } = await supabase
@@ -21,6 +22,7 @@ const createCommentMutation = useMutation({
     },
     onSuccess: (res) => {
         revalidateSingle(res.note_id);
+        queryClient.invalidateQueries({ queryKey: ['note', res.note_id] });
         reset();
         alert('Comment added successfully!');
     },
@@ -45,6 +47,7 @@ const updateCommentMutation = useMutation({
     },
     onSuccess: (res) => {
         revalidateSingle(res.note_id);
+        queryClient.invalidateQueries({ queryKey: ['note', res.note_id] }); 
         reset();
         alert('Comment updated successfully!');
     },
@@ -69,6 +72,7 @@ const deleteCommentMutation = useMutation({
     },
     onSuccess: (res) => {
         revalidateSingle(res.note_id);
+        queryClient.invalidateQueries({ queryKey: ['note', res.note_id] }); 
         alert('Comment deleted successfully!');
     },
     onError: (error: any) => {

@@ -218,22 +218,16 @@ export default useMutateNote;
 /*const useMutateNote = () => {
 
     const reset= useStore((state) => state.resetEditedNote);
-
     const createNoteMutation = useMutation({
         mutationFn: async (note: Omit<Note, 'created_at' | 'user_id' | 'comments'>) => {
             const user = supabase.auth.user();
-
             if (!user) {
-            throw new Error('ユーザーが取得できません（未ログインまたはSSR）');
-            }
-
+            throw new Error('
             const insertPayload = {
                 ...note,
                 user_id: user.id,
             };
-
               console.log("送信するデータ:", insertPayload); // ← 必ず確認！
-
         const { data, error } = await supabase
             .from('notes')
             .insert(insertPayload)
@@ -255,7 +249,6 @@ export default useMutateNote;
         }
     }
 );
-
     const updateNoteMutation = useMutation({
         mutationFn: async (editedNote: EditedNote) => {
             const { data, error } = await supabase
@@ -281,7 +274,6 @@ export default useMutateNote;
             reset();
         }
     });
-
         const deleteNoteMutation = useMutation({
         mutationFn: async (id: string) => {
             const { error } = await supabase
@@ -307,9 +299,7 @@ return {
     createNoteMutation,
     updateNoteMutation,
     deleteNoteMutation
-
 };
-
 }
 export default useMutateNote;
 */
@@ -358,7 +348,11 @@ export const useMutateNote = () => {
 
       // ISR: /notes を再生成
       await revalidateList();
-
+      await revalidateSingle(newNote.id); // /notes/[id] ページ の再生成
+      // 再生成後にキャッシュ更新
+      queryClient.invalidateQueries({ queryKey: ['notes'] });
+      // キャッシュ更新後にフォームをリセット
+      // これにより、フォームの内容が初期状態に戻る
       reset();
       alert('ノートを作成しました');
     },

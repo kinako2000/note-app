@@ -1,6 +1,7 @@
 import { FC,ReactNode } from "react"
 import  Head from "next/head"
-import { ShieldCheckIcon } from "@heroicons/react/24/solid"
+
+import { ShieldCheckIcon } from "@heroicons/react/24/outline"
 
 type Title= {
     title: string;

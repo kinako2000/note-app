@@ -22,8 +22,8 @@ export const NoteItem:FC<Omit<Note,'created_at' | 'note_id' | 'comments'>>
         }
         return (
         <li  className="my-3">
-        <Link href={`/note/${id}`} prefetch={false} >
-            <a className="cursor-pointer hover:text=pink=600">{title}</a>
+        <Link href={`/note/${id}`}  prefetch={false} >
+            <div className="cursor-pointer hover:text=pink=600">{title}</div>
         </Link>
         {userId === user_id && (
             <div className="float-right ml-20 flex">

@@ -12,13 +12,13 @@ export const CommentItem:FC<Omit<Comment,'created_at' >> = ({
     user_id,
     note_id
 }) => {
-    const [userId, setUserId] = useState<string | undefined>("");
+    const userId = useStore((state) => state.userId);
     const update = useStore((state) => state.updateEditedComment);
     const { deleteCommentMutation } = useMutateComment();
 
-    useEffect(() => {
-        setUserId(supabase.auth.user()?.id);
-    }, []);
+
+    if (userId === null) return null;
+
     if (deleteCommentMutation.isPending) {
         return <Spinner />
         }

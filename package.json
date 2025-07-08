@@ -13,10 +13,10 @@
     "@supabase/supabase-js": "1.33.3",
     "@tanstack/react-query": "^5.80.6",
     "@tanstack/react-query-devtools": "^5.80.6",
-    "next": "^13",
+    "next": "^15.3.5",
     "node": "18.19.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "zustand": "3.7.1"
   },
   "devDependencies": {

@@ -8,44 +8,39 @@ export const revalidateSingle = (id: string) => {
 
 // utils/revalidation.ts
 
-/**
- * /notes ページのISRを再生成する（一覧用）
- */
+
 export const revalidateList = async () => {
     try {
-        await fetch('/api/revalidate', {
+      await fetch('/api/revalidate', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            type: 'list',
-            secret: process.env.NEXT_PUBLIC_REVALIDATE_SECRET,
+          type: 'list',
+          secret: process.env.NEXT_PUBLIC_REVALIDATE_SECRET, // ✅ 修正
         }),
-        });
+      });
     } catch (error) {
-        console.error('リスト再検証に失敗しました:', error);
+      console.error('リスト再検証に失敗しました:', error);
     }
-    };
-
-    /**
-   * /notes/[id] ページのISRを再生成する（詳細ページ用）
-   * @param id ノートのID
-   */
-    export const revalidateSingle = async (id: string) => {
+  };
+  
+  export const revalidateSingle = async (id: string) => {
     try {
-        await fetch('/api/revalidate', {
+      await fetch('/api/revalidate', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            type: 'single',
-            id,
-            secret: process.env.NEXT_PUBLIC_REVALIDATE_SECRET,
+          type: 'single',
+          id,
+          secret: process.env.NEXT_PUBLIC_REVALIDATE_SECRET, // ✅ 修正
         }),
-        });
+      });
     } catch (error) {
-        console.error(`ノートID ${id} の再検証に失敗しました:`, error);
+      console.error(`再検証失敗: ${error}`);
     }
-    };
+  };
+  
